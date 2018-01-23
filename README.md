@@ -1,4 +1,4 @@
-# QCoo-Code ** there are two versions QCoo here ,One is Kickstarter Version on the master brunch and a BMG
+# QCoo-Code ** there are two versions QCoo here ,One is Kickstarter Version on the master brunch and a BMG160 Version on the BMG160 brunch.
 
 
 
@@ -10,7 +10,7 @@
 
 
 
-#GAQ
+#FAQ
 
 1.How I know the version of the QCoo hardware?
 
@@ -35,4 +35,8 @@ ANS:you can buy is on the Amazon or www.geekplay.cc.
 
 5.Why the QCoo doesn't work?
 
-ANS: if you have try your best on solving the problem and did't get it clear, you can email support@geekplay.cc for help.
+ANS: Notice first :that you did not update firmware with the wrong brunch,if you got your Qcoo after year 2018,We can make sure that 
+
+you got the BMG160 version.Now please download the BMG160 brunch for updating your Qcoo.
+
+if you have try your best on solving the problem and did't get it clear, you can email support@geekplay.cc for help.
