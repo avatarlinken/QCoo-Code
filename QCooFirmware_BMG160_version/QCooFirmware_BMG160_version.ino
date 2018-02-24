@@ -355,7 +355,7 @@ void callOK(uint8_t index, uint8_t errorcode)
     // if(digitalRead(BCTS) == 0){
     writeSerial(0xf0);
     writeSerial(0x55);
-    writeSerial(0x01);
+    writeSerial(0x02);
     writeSerial(index);
     writeSerial(errorcode);
     writeEnd();
@@ -1504,25 +1504,25 @@ void loop()
         deltaTime = millis(); 
     }
     
-    if ((millis() - lastTime >= 30))//&&is_dev_in_charge==0)
+    if ((millis() - lastTime >= 33))//&&is_dev_in_charge==0)
     {
         lastTime = millis();
-        Serial.print(-gyroy_global);
-        Serial.print(F(","));
-        Serial.print(gyrox_global);
-        Serial.print(F(","));
-        Serial.println(-gyroz_global); 
+//        Serial.print(-gyroy_global);
+//        Serial.print(F(","));
+//        Serial.print(gyrox_global);
+//        Serial.print(F(","));
+//        Serial.println(-gyroz_global); 
 
-        // Serial.write(0xf0);
-        // Serial.write(0x55);
-        // Serial.write(0x06);
-        // Serial.write(data[0]);
-        // Serial.write(data[1]);
-        // Serial.write(data[2]);
-        // Serial.write(data[3]);
-        // Serial.write(data[4]);
-        // Serial.write(data[5]);
-        // Serial.write(0xff);
+         Serial.write(0xf0);
+         Serial.write(0x55);
+         Serial.write(0x06);
+         Serial.write(data[0]);
+         Serial.write(data[1]);
+         Serial.write(data[2]);
+         Serial.write(data[3]);
+         Serial.write(data[4]);
+         Serial.write(data[5]);
+         Serial.write(0xff);
 // Serial.println(digitalRead(IS_IN_CHARGE));
     }
     last_gyrox = gyrox_global;
