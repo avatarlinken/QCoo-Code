@@ -908,11 +908,11 @@ void breath_light(uint8_t wait,uint8_t min,uint8_t max, uint8_t color = 0)
 
     if (st==1)
     {
-        bri = bri - 3;
+        bri = bri - 2;
     }
     if(st==2)
     {
-      bri = bri + 3 ;  
+      bri = bri + 2 ;  
   }
     //bri = 255;// change the effect to White pure.20160406
   for (uint8_t t = 0; t < MAX_LED_NUM; t= t+st)
@@ -1149,29 +1149,25 @@ void read_serial(void)
     {
         if (energy <= 2 && digitalRead(IS_IN_CHARGE) == 0)
         {
-        // power_off_count++;
-            power_off_count = millis()-deltaTime;
-        //Serial.print("Leaking: ");
-        // Serial.println(power_off_count);
-         // delay(100);
+             power_off_count = millis()-deltaTime;
+ 
         }
 
         else
-    //power_off_count = 0;
-            deltaTime = millis();
+        deltaTime = millis();
 
-    if (power_off_count - 120000 >= 2)   //about one minutes 15 seconds .
-    {
-        for (uint8_t i = 0; i < MAX_LED_NUM; i++)
+        if (power_off_count - 12000000 >= 2)   //about one minutes 15 seconds .
         {
-            led.setPixelColor(i, 123, 0, 0);
-            led2.setPixelColor(i, 123, 0, 0);
+            for (uint8_t i = 0; i < MAX_LED_NUM; i++)
+            {
+                led.setPixelColor(i, 123, 0, 0);
+                led2.setPixelColor(i, 123, 0, 0);
+            }
+            led.show();
+            led2.show();
+            digitalWrite(POWER_ON_OFF, HIGH);
         }
-        led.show();
-        led2.show();
-        digitalWrite(POWER_ON_OFF, HIGH);
     }
-}
 int gesture_energy_calculate(int gyrox, int gyroy, int gyroz)/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 {
     int X_tmp_energy = 0;
@@ -1313,19 +1309,7 @@ void power_managment()
 
     bat_voltage = analogRead(VOLTAGE_DETECT_PORT)*3.3/1024.0*10;
     try_to_power_off(energy);
-    // Serial.println(bat_voltage);
-    //delay(100);
-    // if(bat_voltage>=4.10 && digitalRead(IS_IN_CHARGE))
-    // {
-    //     all_off();
-    //     for (uint8_t i = 0; i < MAX_LED_NUM; i++)
-    //     {
-    //         led.setPixelColor(i,0, 233, 0);
-    //         led2.setPixelColor(i, 0, 233, 0);
-    //     }
-    //     led.show();
-    //     led2.show();
-    // }
+ 
     if(bat_voltage<=3.5 && digitalRead(IS_IN_CHARGE) == 0)
     {
         bat_low_counter++;
@@ -1349,7 +1333,7 @@ void power_managment()
     {
         fx_value = 0;
         // power_off_count = 0;
-        breath_light(0,10,250,2);
+        breath_light(0,10,180,2);
     }
 }
 void setup()
