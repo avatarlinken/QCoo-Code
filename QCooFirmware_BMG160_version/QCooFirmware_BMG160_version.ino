@@ -1,3 +1,4 @@
+ 
 //1.8.2
 #include <Wire.h>
 #include "Adafruit_NeoPixel.h"
@@ -393,7 +394,11 @@ void runModule(int device)
         case DEV_MODE:
         {
             is_in_dev_mode = readBuffer(6); 
-            all_off();
+            if(is_in_dev_mode != 0)
+            {
+                all_off();
+            }
+            
         }
         break;
         case DIC_MODE:
@@ -1522,3 +1527,5 @@ void loop()
      is_dev_in_charge = digitalRead(IS_IN_CHARGE);
 }
 
+
+ 
